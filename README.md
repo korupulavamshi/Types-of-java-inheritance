@@ -1,102 +1,524 @@
-Student Management System
+# Types of java Inheritance 
 
-📌 Project Description
+This repository contains Java programs that demonstrate different types of inheritance using real-world examples.
 
-This is a simple Student Management System developed using Java.
+The programs included are:
 
-The project demonstrates the concept of Inheritance in Java. A Student class inherits the properties and methods of the Person class.
+1. **Student Management – Single Inheritance**
+2. **Banking System – Multilevel Inheritance**
+3. **Online Shopping – Hybrid Inheritance**
 
-🛠️ Technologies Used
-Java
-Eclipse IDE
-GitHub
-📚 Java Concept Used
-Inheritance
+These examples help understand how inheritance allows one class to reuse the properties and methods of another class and create relationships between classes.
 
-The project uses Single Inheritance.
+---
 
+# 1. Student Management – Single Inheritance
+
+## Description
+
+This program demonstrates **Single Inheritance** using a student management example.
+
+In single inheritance, one child class inherits from one parent class.
+
+### Class Structure
+
+```text
 Person
    ↓
 Student
-Person is the parent/base class.
-Student is the child/derived class.
-The Student class inherits from the Person class.
+```
 
-📂 Project Structure
+* `Person` is the parent class.
+* `Student` is the child class.
+* `Student` inherits the properties and methods of `Person`.
 
-StudentManagement
+## Classes and Responsibilities
 
-│
+### person.java
 
-└──
-src
+The `person` class contains:
 
-        └── studentmanagement
-  
-          └── person.java
-          
-👤 Person Class
+* `name`
+* `age`
+* `setName()` method
+* `setAge()` method
+* `displayPersonDetails()` method
 
-The Person class contains:
+The `name` and `age` variables are declared as `private`, and setter methods are used to assign their values.
 
-name – Stores the student's name.
-age – Stores the student's age.
-setName() – Sets the person's name.
-setAge() – Sets the person's age.
-displayPersonDetails() – Displays name and age.
+### Student class
 
-🎓 Student Class
-
-The Student class extends the Person class.
+The `Student` class extends the `person` class.
 
 It contains:
 
-rollNo – Stores the student's roll number.
-course – Stores the student's course.
-setRollNo() – Sets the roll number.
-setCourse() – Sets the course.
-displayStudentDetails() – Displays student information.
+* `rollNo`
+* `course`
+* `setRollNo()` method
+* `setCourse()` method
+* `displayStudentDetails()` method
 
-▶️ How to Run
-Open Eclipse IDE.
-Import or create the StudentManagement project.
+It also inherits the methods of the `person` class.
 
-Make sure the package name is:
+### SchoolDemo.java
 
-package studentmanagement;
-Create the person.java file.
-Add the provided Java code.
-Create a separate class containing the main() method to create a Student object.
-Run the program.
+This is the main class.
 
-💡 Example
+It:
 
-A Student object can access its own methods as well as the inherited methods from Person.
+1. Creates a `Student` object.
+2. Takes student information using `Scanner`.
+3. Sets the values using setter methods.
+4. Displays the person details.
+5. Displays the student details.
 
-Student s = new Student();
+## Files
 
-s.setName("Vamshi");
-s.setAge(22);
-s.setRollNo(101);
-s.setCourse("B.Tech CSM");
+```text
+01_Student_Management/
+├── person.java
+└── SchoolDemo.java
+```
 
-s.displayPersonDetails();
-s.displayStudentDetails();
+## Run the Program
 
-🎯 Objective
+```text
+javac *.java
+java SchoolDemo
+```
 
-The main objective of this project is to understand:
+---
 
-Classes and Objects
+# 2. Banking System – Multilevel Inheritance
 
-Encapsulation
+## Description
 
-Inheritance
+This program demonstrates **Multilevel Inheritance** using a banking system example.
 
-Methods
+In multilevel inheritance, a class inherits from another child class, creating a chain of inheritance.
 
-Private variables
+### Class Structure
 
-Setter methods
+```text
+Account
+   ↓
+SavingsAccount
+   ↓
+StudentSavingsAccount
+```
 
-Java packages
+* `Account` is the base class.
+* `SavingsAccount` inherits from `Account`.
+* `StudentSavingsAccount` inherits from `SavingsAccount`.
+* Therefore, `StudentSavingsAccount` can access the inherited methods from both `SavingsAccount` and `Account`.
+
+## Classes and Responsibilities
+
+### Account.java
+
+The `Account` class is the base class.
+
+It contains:
+
+* `accountHolder`
+* `balance`
+* `setAccountHolder()` method
+* `setBalance()` method
+* `displayAccountDetails()` method
+
+It stores and displays basic account information.
+
+### SavingsAccount.java
+
+The `SavingsAccount` class extends the `Account` class.
+
+It contains:
+
+* `interestRate`
+* `setInterestRate()` method
+* `displaySavingsDetails()` method
+
+It inherits the account details and methods from `Account`.
+
+### StudentSavingsAccount.java
+
+The `StudentSavingsAccount` class extends the `SavingsAccount` class.
+
+It contains:
+
+* `discount`
+* `setDiscount()` method
+* `displayStudentSavingsDetails()` method
+
+It inherits the properties and methods from both `SavingsAccount` and `Account`.
+
+### BankDemo.java
+
+This is the main class.
+
+It:
+
+1. Creates a `StudentSavingsAccount` object.
+2. Takes account holder name using `Scanner`.
+3. Takes account balance.
+4. Takes interest rate.
+5. Takes student discount.
+6. Displays account details.
+7. Displays savings account details.
+8. Displays student savings details.
+
+## Files
+
+```text
+02_Banking_System/
+├── Account.java
+├── SavingsAccount.java
+├── StudentSavingsAccount.java
+└── BankDemo.java
+```
+
+## Run the Program
+
+```text
+javac *.java
+java BankDemo
+```
+
+---
+
+# 3. Online Shopping – Hybrid Inheritance
+
+## Description
+
+This program demonstrates **Hybrid Inheritance** using an online shopping example.
+
+Hybrid inheritance is a combination of more than one inheritance structure.
+
+In this example, **Hierarchical Inheritance** and **Multilevel Inheritance** are combined.
+
+### Class Structure
+
+```text
+                 Product
+                /       \
+        Electronics    Clothing
+             |
+           Laptop
+```
+
+### Explanation
+
+* `Product` is the base class.
+* `Electronics` inherits from `Product`.
+* `Clothing` also inherits from `Product`.
+* `Laptop` inherits from `Electronics`.
+
+Therefore, the program combines:
+
+### Hierarchical Inheritance
+
+```text
+        Product
+        /     \
+ Electronics  Clothing
+```
+
+Both `Electronics` and `Clothing` inherit from `Product`.
+
+### Multilevel Inheritance
+
+```text
+Product
+   ↓
+Electronics
+   ↓
+Laptop
+```
+
+`Laptop` inherits from `Electronics`, which itself inherits from `Product`.
+
+Together, these structures form a hybrid inheritance example.
+
+## Classes and Responsibilities
+
+### Product.java
+
+The `Product` class is the base class.
+
+It contains:
+
+* `productName`
+* `price`
+* `setProductName()` method
+* `setPrice()` method
+* `getPrice()` method
+* `displayProductDetails()` method
+
+It stores and displays common product information.
+
+### Electronics.java
+
+The `Electronics` class extends the `Product` class.
+
+It contains:
+
+* `brand`
+* `setBrand()` method
+* `displayElectronicsDetails()` method
+
+It inherits product details and methods from `Product`.
+
+### Clothing.java
+
+The `Clothing` class also extends the `Product` class.
+
+It contains:
+
+* `size`
+* `setSize()` method
+* `displayClothingDetails()` method
+
+It inherits product details and methods from `Product`.
+
+### Laptop.java
+
+The `Laptop` class extends the `Electronics` class.
+
+It contains:
+
+* `ram`
+* `setRam()` method
+* `displayLaptopDetails()` method
+
+It inherits the properties and methods from both `Electronics` and `Product`.
+
+### ShoppingDemo.java
+
+This is the main class.
+
+It:
+
+1. Creates a `Laptop` object.
+2. Takes laptop product information using `Scanner`.
+3. Takes the laptop price.
+4. Takes the brand.
+5. Takes the RAM.
+6. Displays laptop and product details.
+7. Creates a `Clothing` object.
+8. Takes clothing product information.
+9. Takes the clothing price.
+10. Takes the clothing size.
+11. Displays clothing and product details.
+
+## Files
+
+```text
+03_Online_Shopping/
+├── Product.java
+├── Electronics.java
+├── Clothing.java
+├── Laptop.java
+└── ShoppingDemo.java
+```
+
+## Run the Program
+
+```text
+javac *.java
+java ShoppingDemo
+```
+
+**Note:** Run `ShoppingDemo.java`, because it contains the `main()` method.
+
+---
+
+# Technologies Used
+
+* Java
+* Object-Oriented Programming
+* Inheritance
+* Encapsulation
+* Classes and Objects
+* Scanner for User Input
+
+---
+
+# Concepts Demonstrated
+
+## Single Inheritance
+
+One child class inherits from one parent class.
+
+```text
+Parent
+   ↓
+Child
+```
+
+Example:
+
+```text
+Person
+   ↓
+Student
+```
+
+---
+
+## Multilevel Inheritance
+
+A class inherits from another child class, creating a chain.
+
+```text
+Parent
+   ↓
+Child
+   ↓
+Grandchild
+```
+
+Example:
+
+```text
+Account
+   ↓
+SavingsAccount
+   ↓
+StudentSavingsAccount
+```
+
+---
+
+## Hierarchical Inheritance
+
+Multiple child classes inherit from the same parent class.
+
+```text
+       Parent
+       /    \
+   Child1  Child2
+```
+
+Example:
+
+```text
+       Product
+       /     \
+ Electronics Clothing
+```
+
+---
+
+## Hybrid Inheritance
+
+Hybrid inheritance combines different inheritance structures.
+
+Example:
+
+```text
+                 Product
+                /       \
+        Electronics    Clothing
+             |
+           Laptop
+```
+
+This combines:
+
+* Hierarchical Inheritance
+* Multilevel Inheritance
+
+---
+
+# User Input
+
+The programs use Java's `Scanner` class to take input from the user.
+
+Example:
+
+```java
+Scanner sc = new Scanner(System.in);
+
+System.out.print("Enter student name: ");
+String name = sc.nextLine();
+```
+
+The use of `Scanner` makes the programs interactive and allows the user to enter information at runtime.
+
+---
+
+# How to Compile and Run
+
+Open the terminal inside the required folder.
+
+### Student Management
+
+```text
+cd 01_Student_Management
+javac *.java
+java SchoolDemo
+```
+
+### Banking System
+
+```text
+cd 02_Banking_System
+javac *.java
+java BankDemo
+```
+
+### Online Shopping
+
+```text
+cd 03_Online_Shopping
+javac *.java
+java ShoppingDemo
+```
+
+---
+
+# Learning Outcome
+
+These programs demonstrate how Java inheritance can be used to:
+
+* Reuse code from parent classes.
+* Create specialized child classes.
+* Build relationships between classes.
+* Implement different types of inheritance.
+* Organize related classes.
+* Use encapsulation with private variables and setter methods.
+* Take dynamic input using `Scanner`.
+* Understand the basics of Object-Oriented Programming.
+
+---
+
+# Repository Structure
+
+```text
+java-inheritance-situations/
+│
+├── README.md
+│
+├── 01_Student_Management/
+│   ├── person.java
+│   └── SchoolDemo.java
+│
+├── 02_Banking_System/
+│   ├── Account.java
+│   ├── SavingsAccount.java
+│   ├── StudentSavingsAccount.java
+│   └── BankDemo.java
+│
+└── 03_Online_Shopping/
+    ├── Product.java
+    ├── Electronics.java
+    ├── Clothing.java
+    ├── Laptop.java
+    └── ShoppingDemo.java
+```
+
+---
+
+# Author
+
+**Vamshi**
